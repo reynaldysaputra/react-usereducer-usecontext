@@ -4,10 +4,11 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import AppsTodo from './01_useReducer/01_todo/apps';
+import AppsContext1 from './02_useContext/01_basic/parent';
 
 ReactDOM.render(
   <React.StrictMode>
-    <AppsTodo />
+    <AppsContext1 />
   </React.StrictMode>,
   document.getElementById('root')
 );
