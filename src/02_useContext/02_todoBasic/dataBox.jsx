@@ -10,7 +10,8 @@ function DataBox(){
 
    return(
       <Fragment>
-         <h1>Data Pelanggan</h1>     
+         <h1>Data Pelanggan</h1>   
+         {console.log(data)} 
          {data.map(item => (
             <div key={item.id} style={{display:'flex',marginLeft:'10px'}} data-id={item.id}>
                <p style={{marginRight : '20px'}}>{item.name}</p>

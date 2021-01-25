@@ -18,8 +18,10 @@ function Reduce(data,action) {
          localStorage.setItem(KeyTodo.KEYLOCAL, JSON.stringify(temporaryData));
          return temporaryData;
       case KeyTodo.DELETE_DATA : 
-         console.log(`data id ${action.payload.id}`);
-         return data;
+         temporaryData.find((item,index) => item.id === action.payload.id && temporaryData.splice(index,1));
+         localStorage.removeItem(KeyTodo.KEYLOCAL);
+         localStorage.setItem(KeyTodo.KEYLOCAL, JSON.stringify(temporaryData))
+         return JSON.parse(localStorage.getItem(KeyTodo.KEYLOCAL));
       default : 
          return data;
    }
@@ -36,7 +38,7 @@ export function TodoContext({children}) {
       if(KeyTodo.ADD_DATA === actionKey) {
          dispatch({type : KeyTodo.ADD_DATA, payload : {dataName: data}});
       }else if (KeyTodo.DELETE_DATA === actionKey) {
-         dispatch({type : KeyTodo.DELETE_DATA, payload: {id : data}})
+         dispatch({type : KeyTodo.DELETE_DATA, payload: {id : Number(data)}})
       }else {
          console.log(actionKey);
       }
