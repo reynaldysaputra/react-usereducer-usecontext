@@ -17,6 +17,9 @@ function Reduce(data,action) {
          temporaryData.push({id : Math.random(), name : action.payload.dataName});
          localStorage.setItem(KeyTodo.KEYLOCAL, JSON.stringify(temporaryData));
          return temporaryData;
+      case KeyTodo.DELETE_DATA : 
+         console.log(`data id ${action.payload.id}`);
+         return data;
       default : 
          return data;
    }
@@ -28,13 +31,20 @@ export function UsePost() {return useContext(AddDataContext)}
 export function TodoContext({children}) {
    const [data, dispatch] = useReducer(Reduce, temporaryData);
 
-   const AddData = (name) => {
-      dispatch({type : KeyTodo.ADD_DATA, payload:{dataName: name}});
+   const Action = (data, dataAction) => {
+      const actionKey = dataAction.target.dataset.action;
+      if(KeyTodo.ADD_DATA === actionKey) {
+         dispatch({type : KeyTodo.ADD_DATA, payload : {dataName: data}});
+      }else if (KeyTodo.DELETE_DATA === actionKey) {
+         dispatch({type : KeyTodo.DELETE_DATA, payload: {id : data}})
+      }else {
+         console.log(actionKey);
+      }
    }
 
    return(
       <DataContext.Provider value={data}>
-         <AddDataContext.Provider value={AddData}>
+         <AddDataContext.Provider value={Action}>
             {children}
          </AddDataContext.Provider>
       </DataContext.Provider>
