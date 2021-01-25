@@ -5,10 +5,11 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import AppsTodo from './01_useReducer/01_todo/apps';
 import AppsContext1 from './02_useContext/01_basic/parent';
+import RoutingTodo from './02_useContext/02_todoBasic/route';
 
 ReactDOM.render(
   <React.StrictMode>
-    <AppsContext1 />
+    <RoutingTodo />
   </React.StrictMode>,
   document.getElementById('root')
 );

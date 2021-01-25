@@ -64,7 +64,6 @@ function AppsTodo() {
                </li>
             ))}
          </ul>
-         {console.log(todo)}
       </Fragment>
    )
 }
