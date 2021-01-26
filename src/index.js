@@ -6,10 +6,11 @@ import reportWebVitals from './reportWebVitals';
 import AppsTodo from './01_useReducer/01_todo/apps';
 import AppsContext1 from './02_useContext/01_basic/parent';
 import RoutingTodo from './02_useContext/02_todoBasic/route';
+import AppsEcommerce1 from './LATIHAN/01_ecommerceBasic/apps';
 
 ReactDOM.render(
   <React.StrictMode>
-    <RoutingTodo />
+    <AppsEcommerce1 />
   </React.StrictMode>,
   document.getElementById('root')
 );
